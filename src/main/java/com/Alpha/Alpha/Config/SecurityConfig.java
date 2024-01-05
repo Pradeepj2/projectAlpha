@@ -39,8 +39,9 @@ public class SecurityConfig {
 				.password(passwordEncoder().encode("12345"))
 				.roles("Admin")
 				.build();
-		
 		return new InMemoryUserDetailsManager(user , admin);
+		
+//		return new customUserDetails();
 	}
 
 	@Bean
@@ -52,6 +53,7 @@ public class SecurityConfig {
 						        .requestMatchers("/admin/**").hasRole("Admin")
 						        .requestMatchers("/user/**").hasRole("User")
 								.requestMatchers("/registration").permitAll()
+								.requestMatchers("/registerUser").permitAll()
 								.anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").successHandler(cuHandler)
 						.permitAll());
