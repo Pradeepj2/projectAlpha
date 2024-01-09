@@ -10,6 +10,7 @@ public class UserController {
 
 	@GetMapping("")
 	public String user() {
+		System.err.println("this is user");
 		return "user";
 		
 	}

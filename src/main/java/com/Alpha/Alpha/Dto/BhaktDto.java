@@ -1,6 +1,7 @@
 package com.Alpha.Alpha.Dto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class BhaktDto {
 	private int id;
+	@NotBlank(message = "{validation.error.required}")
 	private String name;
 	private String hashPassoword;
 	private String role;

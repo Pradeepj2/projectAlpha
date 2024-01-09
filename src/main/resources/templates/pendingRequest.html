@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	<form th:action="@{/approveRegistration}" method="post" >
+		<ul class="container mt-4">
+			<li th:each="item  , sn : ${list}" class="row p-2">
+				<!-- Display your item properties --> <span class="col"
+				th:text="${sn.index + 1}"></span> <span class="col"
+				th:text="${item.name}"></span> <span class="col"
+				th:text="${item.mobileNo}"></span> <span class="col"
+				th:text="${item.role}"></span>
+				<button type="submit" name="id" class="btn btn-outline-success btn-sm"
+					th:value="${item.id + '-' + item.mobileNo+ '-' + item.name}">Approve</button>
+
+			</li>
+		</ul>
+	</form>
+</body>
+</html>

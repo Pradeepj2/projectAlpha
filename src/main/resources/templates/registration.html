@@ -1,73 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <!-- Bootstrap CSS -->
+<meta charset="UTF-8">
+<title>Login</title>
+<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-          crossorigin="anonymous">
- <link rel="stylesheet" href="/css/styles.css">
+          crossorigin="anonymous"> 
+<link rel="stylesheet" href="/css/styles.css">
 <script src="/js/script.js"></script>
 
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <h2 class="mb-4 text-center">Login</h2>
-            <div class="message" th:if="${param.error}">
-				Invalid Username And Password !
-                </div>
-                <div class="message" th:if="${param.logout}">
-			Logout successfully 
-                </div>
-                
-                <form th:action="@{/registerUser}" th:object="${BhaktDto}" method="post">
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text"  class="form-control">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="mobileNo">Mobile No</label>
-                        <input type="number"  class="form-control" >
-                    </div>
-                    
-                    <div class="form-group">
-                        <label  for="role">Role</label>
-                        <select  class="form-control" value="">
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                        
-                        </select>
-                    </div>
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-4">
+				<h2 class="mb-4 text-center">New Request</h2>
+				 
 
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label for="hashPassword">Password</label>
-                        <input th:field="*{hashPassword}" type="password" class="form-control">
-                    </div>
+		<!-- 		<form th:action="@{/registerUser}" -->
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
+				<form th:action="@{registration}"  
+					method="post">
+					<!-- Email -->
+					<div class="form-group">
+						<label for="name">Name</label> <input type="text" name="name"
+							class="form-control">
+							<span><th:errors path="username" class="error" /></span>
+					</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-ZosEbRLrb1mxZz1KE5LVbNKrTfzYpdjIcd+POHEbLbhKQj2Bbu7z7p5hR6czd6zj"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-            crossorigin="anonymous"></script>
+					<div class="form-group">
+						<label for="mobileNo">Mobile No</label> <input type="number" name="mobileNo"
+							class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="role">Role</label> <select class="form-control" name="role"
+							value="">
+							<option value="Admin">Admin</option>
+							<option value="User">User</option>
+
+						</select>
+					</div>
+
+					<!-- Password -->
+					<div class="form-group">
+						<label for="hashPassword">Password</label> <input name="hashPassword"
+						  type="password" class="form-control">
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-primary btn-block">Send Request -></button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	
 </body>
 </html>

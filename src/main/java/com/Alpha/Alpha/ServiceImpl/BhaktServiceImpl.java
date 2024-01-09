@@ -1,5 +1,7 @@
 package com.Alpha.Alpha.ServiceImpl;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,25 +21,36 @@ public class BhaktServiceImpl implements BhaktService{
 	
 	
 	@Override
-    public boolean createBhakt(BhaktDto bhaktDto) {
-        Bhakt bhakt = this.modelMapper.map(bhaktDto, Bhakt.class);
+    public boolean createBhakt(Bhakt bhakt) {
+        //Bhakt bhakt = this.modelMapper.map(bhaktDto, Bhakt.class);
            this.bhaktRepo.save(bhakt);
            return true;
     }
+//
+//    private BhaktDto bhaktToDto(Bhakt bhakt) {
+//           BhaktDto bhaktDto = this.modelMapper.map(bhakt, BhaktDto.class);
+//           return bhaktDto;
+//
+//    }
 
 
+	@Override
+	public Bhakt findByMobileNo(String mobileNo) {
+		return bhaktRepo.findByMobNo(mobileNo);
+	}
 
 
-
-    private BhaktDto bhaktToDto(Bhakt bhakt) {
-           BhaktDto bhaktDto = this.modelMapper.map(bhakt, BhaktDto.class);
-           return bhaktDto;
-
-    }
+	@Override
+	public List<Bhakt> getAllPendingRequest() {
+		return bhaktRepo.getAllPendingRequest();
+	}
 
 
-
-
+	@Override
+	public void approve(String id) {
+		bhaktRepo.approve(id);
+		
+	}
 		
 	}
 

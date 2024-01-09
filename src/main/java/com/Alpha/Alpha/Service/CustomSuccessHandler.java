@@ -17,15 +17,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 	 
 		var authorities = authentication.getAuthorities();
  
-		var roles = authorities.stream().map(r -> r.getAuthority()).findFirst();
+		var roles = authorities.stream().map(r -> r.getAuthority()).findFirst().orElse("");
+		System.err.println(roles.equals("Admin"));
 		System.err.println(roles);
 		System.err.println(roles);
-		System.err.println(roles);
-		if (roles.orElse("").equals("ROLE_Admin")) {
+		if (roles.equals("Admin")== true) {
 			response.sendRedirect("/admin");
-		} else if (roles.orElse("").equals("ROLE_User")) {
+		} else if (roles.equals("User")) {
 			response.sendRedirect("/user");
 		} else {
+			System.err.println("this is error in custom user details service");
 			response.sendRedirect("/error");
 		}
 	}
